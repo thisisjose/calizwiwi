@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,44 +8,81 @@ namespace calizwiwi.logic
 {
     internal class Class
     {
-        internal class Class
-    {
-        static void Main(string[] args)
+        //-----------------------------------------------------------------------------------BURBUJA
+        public void Practica1()
         {
-            int[,] t = new int[4, 3];
-            for (int i = 0; i < t.GetLength(0); i++)
+            int n;
+            Console.WriteLine("Que tan grande master");
+            n = Convert.ToInt32(Console.ReadLine());
+            int[] num = new int[n];
+            for (int i = 0; i < n; i++)
             {
-                for(int x=0; x<t.GetLength(1); x++)
-                {
-                    Console.Write($"Ingrese el valor para t[{i},{x}]:");
-                    t[i,x] = Convert.ToInt32(Console.ReadLine());
-                }
+                Console.WriteLine("escribeme el numero we", (i+1));
+                num[i] = Convert.ToInt32(Console.ReadLine());
             }
-
-            int m= t[0,0];
-            for(int i = 0; i<t.GetLength(0); i++)
+            for(int i=0; i<n; i++)
             {
-                for(int x = 0; x<t.GetLength(1); x++)
+                for (int j = i + 1; j < n; j++)
                 {
-                    if (t[i,x] < m)
+                    int vec;
+                    if (num[i] > num[j])
                     {
-                        m = t[i,x];
+                        vec = num[i];
+                        num[i] = num[j];
+                        num[j] = vec;
                     }
                 }
             }
-            Console.WriteLine("El de menor valor en t es: " + m);
-            Console.WriteLine($"{t[0, 0]}\t{t[0, 1]}\t{t[0, 2]}");
-
-            int total = t[0, 2] + t[1, 2] + t[2, 2] + t[3, 2];
-            Console.WriteLine("Total de la tercera columna: " + total);
-
-            for (int i = 0; i < t.GetLength(0); i++)
+            Console.WriteLine("Estos son: ");
+            for(int i = 0; i < n; i++)
             {
-                for (int x = 0; x < t.GetLength(1); x++)
-                {
-                    Console.Write($"t[{i},{x}]\t");
-                }
-                Console.WriteLine();
+                Console.WriteLine(num[i]);
             }
+            Console.ReadKey();
+        }
+        ///-----------------------------------------------------------------------------------SELECCION ALV
+        public void Practica2()
+        {
+            int[] lista = new int[5];
+            for(int i= 0; i < lista.Length; i++)
+            {
+                Console.WriteLine("Escribir el numero");
+                lista[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int menor = 0;
+            int pos = 0;
+            int temp = 0;
+            for(int i=0;i<lista.Length-1; i++)
+            {
+                menor = lista[i];
+                pos= i;
+                for(int j=i+1; j<lista.Length; j++)
+                {
+                    if (lista[j] < menor)
+                    {
+                        menor = lista[j];
+                        pos = j;
+                    }
+                    
+                }
+                if (pos != i)
+                {
+                    temp = lista[i];
+                    lista[i] = lista[pos];
+                    lista[pos] = temp;
+                }
+            }
+            Console.WriteLine("La lista ordenada es: ");
+            for(int i= 0; i < lista.Length; i++)
+            {
+                Console.WriteLine(lista[i]);
+            }
+            Console.WriteLine("Aqui ordenada descendente: ");
+            for(int i= lista.Length-1; i >= 0;i--)
+            {
+                Console.WriteLine(lista[i]);
+            }
+            Console.ReadLine();
+        }
     }
 }
